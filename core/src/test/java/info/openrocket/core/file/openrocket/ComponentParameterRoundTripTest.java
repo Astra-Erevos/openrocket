@@ -64,114 +64,56 @@ import info.openrocket.core.util.MathUtil;
  * @author Baizhen Huang
  */
 public class ComponentParameterRoundTripTest extends BaseTestCase {
-	/**
-	 * Tolerance used when comparing double values.
-	 *
-	 * @author Yibing Liu
-	 */
+	// Tolerance used when comparing double values.
 	private static final double EPSILON = MathUtil.EPSILON;
 
-	/**
-	 * Radius used by the components in the basic round-trip tests.
-	 *
-	 * @author Yibing Liu
-	 */
+	// Radius used by the components in the basic round-trip tests.
 	private static final double COMPONENT_RADIUS = 0.05;
 
-	/**
-	 * Thickness value just below the old clamp boundary.
-	 *
-	 * @author Yibing Liu
-	 */
+	// Thickness value just below the old clamp boundary.
 	private static final double BELOW_OLD_CLAMP_BOUNDARY = 0.024;
 
-	/**
-	 * Thickness value at the old clamp boundary.
-	 *
-	 * @author Yibing Liu
-	 */
+	// Thickness value at the old clamp boundary.
 	private static final double OLD_CLAMP_BOUNDARY = 0.025;
 
-	/**
-	 * Thickness value above the old clamp boundary.
-	 *
-	 * @author Yibing Liu
-	 */
+	// Thickness value above the old clamp boundary.
 	private static final double ABOVE_OLD_CLAMP_BOUNDARY = 0.030;
 
-	/**
-	 * Length of the body tube that holds the components in the nested tests.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Length of the body tube that holds the components in the nested tests.
 	private static final double BODY_TUBE_LENGTH = 0.4;
 
-	/**
-	 * Wall thickness of that body tube.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Wall thickness of that body tube.
 	private static final double BODY_TUBE_THICKNESS = 0.002;
 
-	/**
-	 * Inner radius of that body tube (0.048 m). Components with an automatic
-	 * outer radius should get this value.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Inner radius of that body tube (0.048 m). Components with an automatic
+	// outer radius should get this value.
 	private static final double BODY_TUBE_INNER_RADIUS = COMPONENT_RADIUS - BODY_TUBE_THICKNESS;
 
-	/**
-	 * Manual outer radius of the ring components. It is above the default inner tube
-	 * outer radius (0.0095 m), so a clamp to the default while loading would show.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Manual outer radius of the ring components. It is above the default inner tube
+	// outer radius (0.0095 m), so a clamp to the default while loading would show.
 	private static final double RING_OUTER_RADIUS = 0.03;
 
-	/**
-	 * Thickness of the inner tube, engine block and tube coupler. It is also above
-	 * 0.0095 m, for the same reason.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Thickness of the inner tube, engine block and tube coupler. It is also above
+	// 0.0095 m, for the same reason.
 	private static final double RING_THICKNESS = 0.012;
 
-	/**
-	 * Manual inner radius of the centering ring.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Manual inner radius of the centering ring.
 	private static final double RING_INNER_RADIUS = 0.012;
 
-	/**
-	 * Outer radius of the motor tube around the centering ring. The automatic
-	 * inner radius of the ring should get this value.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Outer radius of the motor tube around the centering ring. The automatic
+	// inner radius of the ring should get this value.
 	private static final double MOTOR_TUBE_OUTER_RADIUS = 0.015;
 
-	/**
-	 * Fixed radius used by all mass object tests. The automatic radius is not
-	 * tested because of #3399.
-	 *
-	 * @author Baizhen Huang
-	 */
+	// Fixed radius used by all mass object tests. The automatic radius is not
+	// tested because of #3399.
 	private static final double MASS_OBJECT_RADIUS = 0.02;
 
-	/**
-	 * Temporary folder used for the saved rocket files.
-	 *
-	 * @author Yibing Liu
-	 */
+	// Temporary folder used for the saved rocket files.
 	@TempDir
 	Path tempDir;
 
 	/**
 	 * Checks that the body tube parameters stay the same after saving and loading.
-	 *
-	 * @author Yibing Liu
 	 *
 	 * @param thickness the body tube thickness used in the test
 	 *
@@ -202,8 +144,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 
 	/**
 	 * Checks that the transition parameters stay the same after saving and loading.
-	 *
-	 * @author Yibing Liu
 	 *
 	 * @param thickness the transition thickness used in the test
 	 *
@@ -260,8 +200,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Checks that the nose cone parameters stay the same after saving and loading.
 	 *
-	 * @author Yibing Liu
-	 *
 	 * @param thickness the nose cone thickness used in the test
 	 *
 	 * @throws IOException if the test file cannot be saved or read
@@ -305,8 +243,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the inner tube parameters stay the same after saving and loading,
 	 * including the cluster and motor mount settings.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
 	 * @throws DecalNotFoundException if a decal cannot be found while loading
@@ -344,8 +280,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Checks that the engine block parameters stay the same after saving and loading,
 	 * with a manual and with an automatic outer radius.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param automaticOuterRadius whether the outer radius is taken from the body tube
 	 *
@@ -385,8 +319,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the tube coupler parameters stay the same after saving and loading,
 	 * with a manual and with an automatic outer radius.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param automaticOuterRadius whether the outer radius is taken from the body tube
 	 *
 	 * @throws IOException if the test file cannot be saved or read
@@ -424,8 +356,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the bulkhead parameters stay the same after saving and loading,
 	 * including the instance count and separation, with a manual and with an automatic
 	 * outer radius.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param automaticOuterRadius whether the outer radius is taken from the body tube
 	 *
@@ -465,8 +395,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the centering ring parameters stay the same after saving and loading,
 	 * with manual radii and with automatic radii. A motor tube is placed around the ring
 	 * so that the automatic inner radius has a value to take.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param automaticRadii whether both radii are automatic
 	 *
@@ -519,8 +447,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * The mass override is not tested because of #3398, and the automatic radius is not
 	 * tested because of #3399.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
 	 * @throws DecalNotFoundException if a decal cannot be found while loading
@@ -554,8 +480,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the shock cord parameters stay the same after saving and loading,
 	 * with a manual cord length.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
 	 * @throws DecalNotFoundException if a decal cannot be found while loading
@@ -587,8 +511,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the parachute parameters stay the same after saving and loading,
 	 * including the default deployment and a deployment override for one flight
 	 * configuration. Only a manual CD is tested.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
@@ -648,8 +570,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the streamer parameters stay the same after saving and loading,
 	 * with a manual and with an automatic CD.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param automaticCd whether the CD is calculated automatically
 	 *
 	 * @throws IOException if the test file cannot be saved or read
@@ -700,8 +620,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * same after saving and loading. The designer name contains XML special characters
 	 * to check that they are escaped.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
 	 * @throws DecalNotFoundException if a decal cannot be found while loading
@@ -747,8 +665,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the separation settings of a second stage stay the same after saving
 	 * and loading, including an override for one flight configuration. Two stages are
 	 * needed because separation settings are only saved from the second stage on.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
@@ -796,8 +712,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the parallel stage parameters stay the same after saving and loading,
 	 * using non-default radius and angle methods.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
 	 * @throws DecalNotFoundException if a decal cannot be found while loading
@@ -839,8 +753,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Checks that the pod set parameters stay the same after saving and loading.
 	 * The angle method is not checked because PodSet.setAngleMethod() does nothing.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @throws IOException if the test file cannot be saved or read
 	 * @throws RocketLoadException if the saved rocket cannot be loaded
 	 * @throws DecalNotFoundException if a decal cannot be found while loading
@@ -873,8 +785,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Creates a rocket document with one stage and the given component.
 	 *
-	 * @author Yibing Liu
-	 *
 	 * @param component the component added to the stage
 	 *
 	 * @return a rocket document containing the component
@@ -891,8 +801,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Creates a rocket document with one stage and one body tube, with the given
 	 * component inside the body tube.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param component the component added to the body tube
 	 *
@@ -913,8 +821,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	 * Returns the component reached from the rocket by following the given child indices,
 	 * e.g. (0, 0, 0) is the first child of the first component in the first stage.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param document the rocket document to read
 	 * @param childIndices the child index at each level
 	 *
@@ -933,8 +839,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Finds a cluster configuration by the name used in the .ork file.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param xmlName the XML name of the configuration, e.g. "3-ring"
 	 *
 	 * @return the matching cluster configuration
@@ -949,8 +853,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Compares the parameters that are saved for every ring component. The outer radius is
 	 * checked against a fixed value, so a clamp while setting up the test would also be caught.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param original the component before saving
 	 * @param loaded the component after loading
@@ -971,8 +873,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Adds the thickness to the shared ring checks (inner tube, engine block, tube coupler).
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param original the component before saving
 	 * @param loaded the component after loading
 	 * @param expectedOuterRadius the outer radius the loaded component should have
@@ -986,8 +886,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Adds the instance count and separation to the shared ring checks (bulkhead, centering
 	 * ring). Only radius ring components save these two.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param original the component before saving
 	 * @param loaded the component after loading
@@ -1003,8 +901,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Compares the parameters that are saved for every mass object (mass component, shock cord,
 	 * recovery devices). All of these tests use the fixed radius MASS_OBJECT_RADIUS.
-	 *
-	 * @author Baizhen Huang
 	 *
 	 * @param original the component before saving
 	 * @param loaded the component after loading
@@ -1023,8 +919,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Checks the event, altitude and delay of a loaded deployment configuration.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param expectedEvent the expected deployment event
 	 * @param expectedAltitude the expected deployment altitude in metres
 	 * @param expectedDelay the expected deployment delay in seconds
@@ -1040,8 +934,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 	/**
 	 * Checks the event, altitude and delay of a loaded stage separation configuration.
 	 *
-	 * @author Baizhen Huang
-	 *
 	 * @param expectedEvent the expected separation event
 	 * @param expectedAltitude the expected separation altitude in metres
 	 * @param expectedDelay the expected separation delay in seconds
@@ -1056,8 +948,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 
 	/**
 	 * Saves a rocket document to a temporary file and loads it again.
-	 *
-	 * @author Yibing Liu
 	 *
 	 * @param document the rocket document to save
 	 * @param fileName the name of the temporary file
@@ -1079,8 +969,6 @@ public class ComponentParameterRoundTripTest extends BaseTestCase {
 
 	/**
 	 * Gets the only component from the first stage of a rocket document.
-	 *
-	 * @author Yibing Liu
 	 *
 	 * @param document the rocket document to read
 	 *
